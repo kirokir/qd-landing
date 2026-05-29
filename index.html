@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quilldraws | Creative Branding Agency Dubai</title>
+
+    <!-- Google Fonts: 'Outfit' & 'Montserrat' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === CSS VARIABLES === */
+        :root {
+            --primary: #c81e4b; 
+            --primary-glow: rgba(200, 30, 75, 0.15); 
+            
+            /* Light Mode Default */
+            --bg: #f2f2f2;
+            --text: #0a0a0a;
+            --text-muted: #555555;
+            --nav-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --dropdown-bg: #ffffff;
+            --dropdown-text: #0a0a0a;
+            --dropdown-hover: #f0f0f0;
+            --pill-bg: rgba(255, 255, 255, 0.85);
+            --popup-bg: #ffffff;
+            --input-bg: #f9f9f9;
+            --band-bg: #ffffff; 
+            --grid-color: rgba(0, 0, 0, 0.06);
+            
+            /* Doodle SVG Data URI for Light Mode */
+            --doodle-pattern: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 Q 30 20 50 10 T 90 10' stroke='rgba(0,0,0,0.06)' fill='none' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M20 60 Q 40 40 60 70 T 110 50' stroke='rgba(0,0,0,0.06)' fill='none' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M80 80 Q 90 100 110 90' stroke='rgba(0,0,0,0.06)' fill='none' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='30' cy='90' r='3' fill='rgba(0,0,0,0.04)'/%3E%3Ccircle cx='90' cy='30' r='2' fill='rgba(0,0,0,0.04)'/%3E%3Cpath d='M5 110 L 15 100 M 15 110 L 5 100' stroke='rgba(0,0,0,0.06)' stroke-width='2'/%3E%3C/svg%3E");
+            --footer-bg: #f8f8f8;
+            --footer-text: #0a0a0a;
+            --footer-link: #333333;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --nav-bg: rgba(30, 30, 30, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --dropdown-bg: #1a1a1a;
+            --dropdown-text: #ffffff;
+            --dropdown-hover: #2a2a2a;
+            --pill-bg: rgba(0, 0, 0, 0.7);
+            --popup-bg: #1a1a1a;
+            --input-bg: #2a2a2a;
+            --primary-glow: rgba(200, 30, 75, 0.25);
+            --band-bg: #121212; 
+            --grid-color: rgba(255, 255, 255, 0.05);
+
+            /* Doodle SVG Data URI for Dark Mode */
+            --doodle-pattern: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 Q 30 20 50 10 T 90 10' stroke='rgba(255,255,255,0.08)' fill='none' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M20 60 Q 40 40 60 70 T 110 50' stroke='rgba(255,255,255,0.08)' fill='none' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M80 80 Q 90 100 110 90' stroke='rgba(255,255,255,0.08)' fill='none' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='30' cy='90' r='3' fill='rgba(255,255,255,0.05)'/%3E%3Ccircle cx='90' cy='30' r='2' fill='rgba(255,255,255,0.05)'/%3E%3Cpath d='M5 110 L 15 100 M 15 110 L 5 100' stroke='rgba(255,255,255,0.08)' stroke-width='2'/%3E%3C/svg%3E");
+            --footer-bg: #111111;
+            --footer-text: #ffffff;
+            --footer-link: #cccccc;
+        }
+
+        /* === RESET & GLOBAL === */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; transition: background-color 0.4s ease, color 0.4s ease; }
+
+        /* === HEADER === */
+        header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text); }
+        .logo-img { height: 50px; width: auto; }
+        .logo-text { font-size: 26px; font-weight: 700; letter-spacing: 0.5px; margin-top: 5px; }
+
+        .top-right { display: flex; align-items: center; gap: 20px; }
+        .header-ctas { display: flex; gap: 20px; }
+        .hero-ctas { display: none; } /* Hidden on desktop */
+
+        .theme-toggle { background: var(--nav-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); color: var(--text); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: all 0.3s ease; }
+        .theme-toggle:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        .btn-outline, .btn-solid { border-radius: 50px; padding: 12px 28px; font-weight: 600; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; }
+        .btn-outline { background-color: var(--nav-bg); backdrop-filter: blur(10px); color: var(--primary); border: 2px solid var(--primary); }
+        .btn-solid { background-color: var(--primary); color: #ffffff; border: 2px solid var(--primary); }
+        .btn-outline:hover { background-color: var(--primary); color: #fff; }
+        .btn-solid:hover { background-color: #a8193f; border-color: #a8193f; }
+
+        /* === DROPDOWN === */
+        .community-wrapper { position: relative; cursor: pointer; padding: 10px; font-weight: 500; }
+        .dropdown-menu { position: absolute; top: 50px; right: 0; background: var(--dropdown-bg); color: var(--dropdown-text); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px 0 10px 0; width: 340px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; cursor: default; }
+        .community-wrapper:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: flex; align-items: flex-start; gap: 15px; padding: 12px 25px; text-decoration: none; color: inherit; transition: background 0.2s; }
+        .dropdown-item:hover { background: var(--dropdown-hover); }
+        .dropdown-text h4 { margin: 0; font-size: 15px; font-weight: 600; }
+        .dropdown-text p { margin: 4px 0 0; font-size: 13px; color: var(--text-muted); }
+        .dropdown-footer { border-top: 1px solid var(--glass-border); margin-top: 10px; padding: 15px 25px 5px 25px; display: flex; align-items: center; gap: 15px; }
+        .dropdown-footer span { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+        .social-icons { display: flex; gap: 12px; }
+        .social-icons a { color: var(--text); font-size: 16px; transition: color 0.2s; }
+        .social-icons a:hover { color: var(--primary); }
+
+        /* === HERO SECTION === */
+        .hero { position: relative; height: 100vh; width: 100vw; display: flex; align-items: center; padding: 0 10%; overflow: hidden; }
+        
+        /* Background & Grid Overlays */
+        .video-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .video-wrapper video { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+        
+        .video-wrapper::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, var(--bg) 20%, rgba(242,242,242,0.7) 45%, rgba(242,242,242,0) 80%); transition: background 0.4s ease; }
+        body.dark-mode .video-wrapper::after { background: linear-gradient(90deg, var(--bg) 20%, rgba(10,10,10,0.7) 45%, rgba(10,10,10,0) 80%); }
+
+        .hero-grid { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; background-size: 50px 50px; background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px); pointer-events: none; transition: background 0.4s ease; }
+
+        .hero-content { position: relative; z-index: 5; max-width: 1000px; pointer-events: auto; }
+        .hero-subtitle { color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 14px; margin-bottom: 25px; display: block; }
+        .hero-title { font-size: 5.5rem; line-height: 1.2; margin: 0 0 20px 0; font-weight: 700; letter-spacing: -1px; }
+        
+        /* JACKPOT ROLLING TEXT EFFECT - FIXED CLIPPING */
+        .jackpot-container { 
+            display: inline-flex; 
+            height: 1.25em; /* Increased to fix descenders clipping */
+            overflow: hidden; 
+            vertical-align: top; 
+            color: var(--primary); 
+            border-bottom: 4px solid var(--primary);
+            padding: 0 5px;
+        }
+        .jackpot-roller { 
+            display: flex; 
+            flex-direction: column; 
+            animation: roll 10s infinite cubic-bezier(0.7, 0, 0.3, 1); 
+        }
+        .jackpot-roller span { 
+            height: 1.25em; 
+            display: flex; 
+            align-items: center; 
+            white-space: nowrap;
+            padding-bottom: 0.1em; /* Extra breathing room */
+        }
+        
+        /* Recalculated heights based on 1.25em */
+        @keyframes roll {
+            0%, 20% { transform: translateY(0); }
+            25%, 45% { transform: translateY(-1.25em); }
+            50%, 70% { transform: translateY(-2.50em); }
+            75%, 95% { transform: translateY(-3.75em); }
+            100% { transform: translateY(-5.00em); }
+        }
+
+        .hero-desc { font-size: 1.2rem; color: var(--text-muted); font-weight: 400; line-height: 1.6; max-width: 500px; margin-top: 15px; }
+
+        /* === BRAND LOGO MARQUEE === */
+        .brands-band { background: var(--band-bg); padding: 40px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); overflow: hidden; position: relative; z-index: 6; display: flex; }
+        .brands-track { display: flex; width: max-content; animation: scroll-left 30s linear infinite; }
+        .brands-track:hover { animation-play-state: paused; }
+        .brand-logo { margin: 0 50px; display: flex; align-items: center; justify-content: center; filter: grayscale(100%) opacity(0.5); transition: all 0.4s ease; cursor: default; }
+        .brand-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
+
+        .logo-toshiba { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 28px; letter-spacing: 1px; color: #cc0000; }
+        .logo-hisense { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 30px; color: #00a69c; }
+        .logo-gorenje { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 32px; letter-spacing: -1px; color: #222; }
+        .logo-kelon { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 28px; color: #3563a9; }
+        .logo-aux { text-align: center; line-height: 1.1; color: #111; }
+        .logo-aux strong { font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; }
+        .logo-aux small { font-family: 'Outfit', sans-serif; font-size: 12px; display: block; font-weight: 400; }
+        .logo-uggo { font-family: 'Georgia', serif; font-style: italic; font-size: 30px; color: #e65c00; font-weight: 700; }
+        .logo-vektr { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 2px; color: #111; }
+        .logo-vektr span { color: #d32f2f; }
+        .logo-axios { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 500; color: #333; }
+        .logo-axios i { font-style: normal; color: #f08a28; font-weight: 700; }
+
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* === "DESIGN FOR EVERYONE" SECTION === */
+        .dfe-section {
+            position: relative;
+            min-height: 100vh;
+            background-color: #f75536; 
+            background-image: 
+                linear-gradient(rgba(247, 85, 54, 0.6), rgba(200, 30, 75, 0.8)),
+                url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 5%;
+            color: #ffffff;
+            z-index: 5;
+        }
+
+        .dfe-header { position: absolute; top: 40px; left: 40px; right: 40px; display: flex; justify-content: space-between; font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        .dfe-top-text { font-size: 12px; font-weight: 600; letter-spacing: 2px; opacity: 0.9; margin-bottom: 30px; text-transform: uppercase; }
+        .dfe-top-text span { display: block; margin-top: 10px; font-size: 15px; letter-spacing: 0px; font-weight: 400; opacity: 1; }
+        
+        .dfe-huge {
+            font-size: 11vw;
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -2px;
+            margin: 20px 0;
+            background: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1920&q=80') center/cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent; /* Fallback */
+            text-transform: uppercase;
+        }
+
+        .dfe-bottom-text { font-size: 16px; font-weight: 400; max-width: 450px; line-height: 1.5; margin-bottom: 40px; opacity: 0.9; }
+        .dfe-btn { background: transparent; color: #fff; border: 1px solid #fff; border-radius: 0; padding: 14px 32px; font-weight: 600; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
+        .dfe-btn:hover { background: #fff; color: #000; }
+
+        /* === STICKY SCROLL WORK SHOWCASE === */
+        .work-showcase { position: relative; background: var(--bg); z-index: 6; }
+        .work-panel { position: sticky; top: 0; height: 100vh; width: 100vw; display: flex; overflow: hidden; box-shadow: 0 -20px 50px rgba(0,0,0,0.1); }
+        body.dark-mode .work-panel { box-shadow: 0 -20px 50px rgba(0,0,0,0.5); }
+        .split-left, .split-right { width: 50%; height: 100%; position: relative; }
+        .split-left img, .split-right img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        .panel-text { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2.5rem; font-weight: 300; text-shadow: 0 4px 20px rgba(0,0,0,0.8); z-index: 2; }
+        .split-left .panel-text { left: 10%; }
+        .split-right .panel-text { right: 10%; text-align: right; }
+        .panel-number { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; display: block; color: var(--primary); }
+        .center-card { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; height: 350px; background: #d4a373; border-radius: 20px; z-index: 5; box-shadow: 0 30px 60px rgba(0,0,0,0.4); overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        .center-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* === DOODLE FOOTER === */
+        .doodle-footer {
+            background-color: var(--footer-bg);
+            background-image: var(--doodle-pattern);
+            background-size: 120px 120px;
+            color: var(--footer-text);
+            padding: 80px 40px 0;
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-col { display: flex; flex-direction: column; gap: 15px; }
+        .footer-col p { font-size: 16px; line-height: 1.6; opacity: 0.9; }
+        .footer-col h4 { font-size: 18px; margin-bottom: 5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col a { color: var(--footer-link); text-decoration: none; font-size: 16px; font-weight: 500; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--primary); }
+        .footer-clock { margin-top: auto; font-size: 16px; font-weight: 600; opacity: 0.7; }
+
+        .footer-bottom-links {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto 40px;
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+        .footer-bottom-links div { display: flex; gap: 30px; }
+        .footer-bottom-links a { color: inherit; text-decoration: none; transition: 0.2s; }
+        .footer-bottom-links a:hover { color: var(--primary); }
+
+        /* Giant Footer Marquee */
+        .footer-giant-marquee {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .fg-track {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-left-fast 15s linear infinite;
+        }
+        .fg-track h1 {
+            font-size: 14vw;
+            font-weight: 900;
+            margin: 0 20px;
+            line-height: 1;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+        }
+        @keyframes scroll-left-fast { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Striped bottom edge */
+        .footer-stripes {
+            height: 40px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #000,
+                #000 4px,
+                #fff 4px,
+                #fff 8px
+            );
+        }
+
+        /* === BOTTOM NAV ISLAND === */
+        .bottom-nav { 
+            position: fixed; 
+            bottom: 30px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: var(--nav-bg); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            border: 1px solid var(--glass-border); 
+            border-radius: 60px; 
+            padding: 8px; 
+            z-index: 1000; 
+            transition: background 0.4s ease; 
+        }
+        .bottom-nav ul { list-style: none; display: flex; align-items: center; gap: 5px; margin: 0; padding: 0; }
+        .bottom-nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 40px; transition: all 0.3s ease; display: block; }
+        .bottom-nav a:hover { background: rgba(128,128,128,0.15); color: var(--text); }
+        .bottom-nav a.active { background: var(--primary); color: #ffffff; }
+
+        /* === FLOATING WHATSAPP WIDGET === */
+        .wa-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1001; /* Above nav, below popups */
+            text-decoration: none;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .wa-widget:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: #fff;
+        }
+
+        /* === PREVIEW ALERT TOAST === */
+        .preview-toast { position: fixed; top: -150px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; padding: 16px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; box-shadow: 0 10px 30px rgba(200,30,75,0.4); z-index: 100000; display: flex; align-items: center; gap: 12px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; width: max-content; max-width: 90%; text-align: center; justify-content: center; }
+        .preview-toast.show { top: 30px; }
+
+        /* === POPUP FORM === */
+        .popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.5s ease; }
+        .popup-overlay.show { opacity: 1; visibility: visible; }
+        .popup-content { background: var(--popup-bg); width: 850px; max-width: 90%; border-radius: 20px; display: flex; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3); position: relative; transform: scale(0.9); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid var(--glass-border); }
+        .popup-overlay.show .popup-content { transform: scale(1); }
+        .popup-left { background: linear-gradient(135deg, var(--primary), #a8193f); color: #fff; width: 45%; padding: 50px 40px; display: flex; flex-direction: column; justify-content: center; text-align: left; }
+        .popup-left h2 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 15px; }
+        .popup-left p { font-size: 1.1rem; opacity: 0.9; }
+        .popup-right { width: 55%; padding: 40px 50px; position: relative; color: var(--text); display: flex; flex-direction: column; justify-content: center; }
+        .close-popup { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 24px; color: var(--text-muted); transition: color 0.3s; }
+        .close-popup:hover { color: var(--primary); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;}
+        .form-group input, .form-group select { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--input-bg); color: var(--text); font-family: inherit; font-size: 15px; transition: border 0.3s; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--primary); }
+        .popup-btn { width: 100%; padding: 14px; background: var(--primary); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 16px; margin-top: 10px; transition: background 0.3s; letter-spacing: 1px; }
+        .popup-btn:hover { background: #a8193f; }
+        .safety-text { font-size: 12px; color: var(--text-muted); margin-top: 15px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+        /* === MOBILE OPTIMIZATION === */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 4.5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            /* Clean Header: Logo left, Theme toggle right, Community center */
+            header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; padding: 15px 20px; }
+            .logo-container { position: relative; z-index: 1001; }
+            .theme-toggle { position: relative; z-index: 1001; margin: 0; }
+            
+            .top-right { width: 100%; margin-top: 10px; display: flex; justify-content: center; }
+            .header-ctas { display: none; } /* Hide in header on mobile */
+            
+            .community-wrapper { width: auto; padding: 5px; }
+            .dropdown-menu { left: 50%; right: auto; transform: translateX(-50%) translateY(10px); width: 90vw; }
+            .community-wrapper:hover .dropdown-menu { transform: translateX(-50%) translateY(0); }
+            
+            /* Remove Video to declutter mobile */
+            .video-wrapper { display: none; }
+            .hero { padding: 120px 5% 40px; align-items: flex-start; }
+
+            /* Fix Jackpot Text clipping on mobile */
+            .hero-title { font-size: 2.8rem; }
+            .jackpot-container { border-bottom-width: 2px; }
+            .hero-desc { font-size: 1rem; margin-top: 20px; }
+            
+            /* Display CTAs inside Hero on Mobile */
+            .hero-ctas { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; width: 100%; }
+            .hero-ctas a { flex: 1; text-align: center; justify-content: center; padding: 14px 10px; font-size: 12px; }
+            
+            .dfe-huge { font-size: 15vw; margin: 40px 0; }
+            .dfe-header { position: static; flex-direction: column; gap: 15px; margin-bottom: 40px; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-bottom-links { flex-direction: column; gap: 15px; align-items: center; text-align: center; }
+
+            .work-panel { flex-direction: column; }
+            .split-left, .split-right { width: 100%; height: 50%; }
+            .center-card { width: 220px; height: 220px; }
+            
+            /* Horizontal & Vertical Island Navigation on Mobile */
+            .bottom-nav { 
+                width: calc(100% - 90px); /* Leave room for whatsapp widget */
+                max-width: 320px; 
+                left: 20px;
+                transform: none;
+                border-radius: 25px; /* Softer radius for wrapping grid */
+                padding: 10px;
+            }
+            .bottom-nav ul { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 8px;
+            }
+            .bottom-nav a {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            /* Adjust WA Widget for mobile */
+            .wa-widget {
+                width: 50px;
+                height: 50px;
+                font-size: 26px;
+                bottom: 25px;
+                right: 20px;
+            }
+            
+            .popup-content { flex-direction: column; width: 95%; max-height: 90vh; overflow-y: auto; }
+            .popup-left, .popup-right { width: 100%; padding: 30px 20px; }
+            .popup-left { text-align: center; padding: 40px 20px; }
+            .popup-left h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PREVIEW NOTIFICATION TOAST -->
+    <div id="previewToast" class="preview-toast">
+        <i class="fa-solid fa-code"></i>
+        This is a preview. Come back later for full experience. Devs at work!
+    </div>
+
+    <!-- HEADER (Decluttered on Mobile) -->
+    <header>
+        <a href="#" class="logo-container">
+            <!-- REQUIRED FILE: logo.png -->
+            <img src="logo.png" alt="Quilldraws Logo" class="logo-img">
+            <span class="logo-text">Quilldraws</span>
+        </a>
+        
+        <button class="theme-toggle" id="theme-btn" aria-label="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <div class="top-right">
+            <div class="community-wrapper">
+                Community <i class="fa-solid fa-chevron-down" style="font-size: 12px; margin-left: 5px;"></i>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">
+                        <i class="fa-solid fa-trophy" style="margin-top: 4px;"></i>
+                        <div class="dropdown-text">
+                            <h4>Playoffs</h4>
+                            <p>Join creative challenges and show your skills</p>
+                        </div>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fa-regular fa-circle-question" style="margin-top: 4px;"></i>
+                        <div class="dropdown-text">
+                            <h4>Help Center</h4>
+                            <p>Get quick answers and learn how to use Quilldraws</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-footer">
+                        <span>Follow Us</span>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-ctas">
+                <a href="#" class="btn-outline">View Our Work</a>
+                <a href="#" class="btn-solid">Start A Project</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HERO (JACKPOT TEXT ADDED, PC VIDEO ONLY) -->
+    <section class="hero">
+        <!-- REQUIRED FILE: hero-video.mp4 -->
+        <div class="video-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="hero-video.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="hero-grid"></div>
+
+        <div class="hero-content">
+            <span class="hero-subtitle">Welcome to Quilldraws</span>
+            <h1 class="hero-title">
+                <span class="block">Dubai's Boutique</span>
+                
+                <!-- Jackpot Rolling Text (Fixed clipping) -->
+                <span class="jackpot-container">
+                    <span class="jackpot-roller">
+                        <span>Brand Strategy</span>
+                        <span>Advertising Campaigns</span>
+                        <span>Packaging</span>
+                        <span>Billboards</span>
+                        <span>Brand Strategy</span> <!-- Repeat first item for seamless loop -->
+                    </span>
+                </span>
+                
+                <span class="block">& Creative Studio.</span>
+            </h1>
+            <p class="hero-desc">Strategic creativity crafted for startups, SMEs, and evolving brands.</p>
+            
+            <!-- Mobile Only CTAs (Moved to bottom of hero text) -->
+            <div class="hero-ctas">
+                <a href="#" class="btn-outline">View Our Work</a>
+                <a href="#" class="btn-solid">Start A Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAND OF BRANDS -->
+    <section class="brands-band">
+        <div class="brands-track">
+            <!-- First Set -->
+            <div class="brand-logo logo-toshiba">TOSHIBA</div>
+            <div class="brand-logo logo-hisense">Hisense</div>
+            <div class="brand-logo logo-gorenje">gorenje</div>
+            <div class="brand-logo logo-kelon">KELON</div>
+            <div class="brand-logo logo-aux"><strong>AUX</strong><small>Air Conditioner</small></div>
+            <div class="brand-logo logo-uggo">Uggo</div>
+            <div class="brand-logo logo-vektr">VE<span><</span>TR</div>
+            <div class="brand-logo logo-axios">ax<i>i</i>os</div>
+            <!-- Second Set -->
+            <div class="brand-logo logo-toshiba">TOSHIBA</div>
+            <div class="brand-logo logo-hisense">Hisense</div>
+            <div class="brand-logo logo-gorenje">gorenje</div>
+            <div class="brand-logo logo-kelon">KELON</div>
+            <div class="brand-logo logo-aux"><strong>AUX</strong><small>Air Conditioner</small></div>
+            <div class="brand-logo logo-uggo">Uggo</div>
+            <div class="brand-logo logo-vektr">VE<span><</span>TR</div>
+            <div class="brand-logo logo-axios">ax<i>i</i>os</div>
+        </div>
+    </section>
+
+    <!-- "DESIGN FOR EVERYONE" SECTION -->
+    <section class="dfe-section">
+        <div class="dfe-header">
+            <span>Quilldraws</span>
+            <span class="live-clock">Loading time...</span>
+        </div>
+        
+        <div class="dfe-top-text">
+            MADE BY QUILLDRAWS
+            <span>Thoughtful design across<br>brands, products, and digital experiences</span>
+        </div>
+        
+        <div class="dfe-huge">
+            Design<br>For<br>Everyone
+        </div>
+
+        <div class="dfe-bottom-text">
+            WE HELP IDEAS BECOME CLEAR, USABLE, AND BEAUTIFULLY CRAFTED
+        </div>
+        
+        <a href="#" class="dfe-btn">Schedule a Call</a>
+    </section>
+
+    <!-- STICKY SCROLL WORK SHOWCASE -->
+    <section class="work-showcase">
+        <div class="work-panel" style="z-index: 10;">
+            <div class="split-left">
+                <img src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=1200&q=80" alt="Family watching TV">
+                <div class="panel-text"><span class="panel-number">01</span>Hisense</div>
+            </div>
+            <div class="center-card"><img src="https://images.unsplash.com/photo-1593344484962-796055d4a3a4?auto=format&fit=crop&w=600&q=80" alt="Appliances Box"></div>
+            <div class="split-right">
+                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&q=80" alt="Lion">
+                <div class="panel-text"><span class="panel-number">04</span>Brand System</div>
+            </div>
+        </div>
+        <div class="work-panel" style="z-index: 11;">
+            <div class="split-left">
+                <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=80" alt="Car Detail Dark">
+                <div class="panel-text"><span class="panel-number">02</span>Toyota SME</div>
+            </div>
+            <div class="center-card"><img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=600&q=80" alt="Delivery Van Boxes"></div>
+            <div class="split-right">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80" alt="Car Exterior">
+                <div class="panel-text"><span class="panel-number">05</span>Campaign System</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOM DOODLE FOOTER -->
+    <footer class="doodle-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <p>TechHub Plaza, Suite 301<br>Main Street, Metro Tower, Floor 15<br>Dubai, UAE</p>
+            </div>
+            <div class="footer-col">
+                <h4>About QUILLDRAWS</h4>
+                <a href="#">Gallery</a>
+                <a href="#">Article</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>Inquiries</h4>
+                <a href="mailto:hello@quilldraws.com">hello@quilldraws.com</a>
+                <a href="mailto:info@quilldraws.com">info@quilldraws.com</a>
+            </div>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <a href="#">X link</a>
+                <a href="#">Dribbble</a>
+                <a href="#">Linkedin</a>
+                <span class="footer-clock live-clock">Loading time...</span>
+            </div>
+        </div>
+        
+        <div class="footer-bottom-links">
+            <span>Copyright 2025 Quilldraws</span>
+            <div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </div>
+        </div>
+
+        <!-- Giant Marquee Bottom -->
+        <div class="footer-giant-marquee">
+            <div class="fg-track">
+                <h1>QUILLDRAWS</h1>
+                <h1>QUILLDRAWS</h1>
+                <h1>QUILLDRAWS</h1>
+                <h1>QUILLDRAWS</h1>
+            </div>
+        </div>
+        <!-- Striped Edge -->
+        <div class="footer-stripes"></div>
+    </footer>
+
+    <!-- BOTTOM FLOATING NAVIGATION (Wraps horizontally and vertically on phones) -->
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="#" class="active">Hello</a></li>
+            <li><a href="#">Agency</a></li>
+            <li><a href="#">Expertise</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Insights</a></li>
+            <li><a href="#">Talk</a></li>
+        </ul>
+    </nav>
+
+    <!-- FLOATING WHATSAPP WIDGET -->
+    <a href="https://wa.me/971501234567" target="_blank" class="wa-widget" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- 9 SECOND LEAD POPUP -->
+    <div class="popup-overlay" id="leadPopup">
+        <div class="popup-content">
+            <div class="popup-left">
+                <h2>Wanna grow your brand?</h2>
+                <p>Let us help you elevate your business to the next level. Fill out the form and our experts will reach out to you shortly.</p>
+            </div>
+            <div class="popup-right">
+                <i class="fa-solid fa-xmark close-popup" id="closePopupBtn"></i>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email or Phone</label>
+                        <input type="text" placeholder="john@example.com or +971 50..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Brand / Company Name</label>
+                        <input type="text" placeholder="Your Brand LLC">
+                    </div>
+                    <div class="form-group" style="display: flex; gap: 15px;">
+                        <div style="flex: 1;">
+                            <label>Category</label>
+                            <select required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="retail">Retail</option>
+                                <option value="tech">Technology</option>
+                                <option value="real_estate">Real Estate</option>
+                                <option value="fnb">Food & Beverage</option>
+                            </select>
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Service Required</label>
+                            <select required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="branding">Brand Strategy</option>
+                                <option value="identity">Brand Identity</option>
+                                <option value="packaging">Packaging Design</option>
+                                <option value="advertising">Advertising</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="popup-btn">GET STARTED NOW</button>
+                    <span class="safety-text"><i class="fa-solid fa-lock"></i> All details will be kept 100% safe and secure.</span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Theme Toggle Logic
+            const themeBtn = document.getElementById('theme-btn');
+            const icon = themeBtn.querySelector('i');
+            const body = document.body;
+
+            themeBtn.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            });
+
+            // 2. Real-Time Clock Logic
+            const clockElements = document.querySelectorAll('.live-clock');
+            function updateClocks() {
+                const now = new Date();
+                const options = { weekday: 'long', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+                const timeString = now.toLocaleDateString('en-US', options).split(', ')[1] || now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+                const weekday = now.toLocaleDateString('en-US', { weekday: 'long' });
+                const fullString = `${weekday}, ${timeString}`;
+
+                clockElements.forEach(el => el.textContent = fullString);
+            }
+            setInterval(updateClocks, 1000);
+            updateClocks(); 
+
+            // 3. 9-Second Popup Logic
+            const popup = document.getElementById('leadPopup');
+            const closeBtn = document.getElementById('closePopupBtn');
+            
+            setTimeout(() => {
+                if (!popup.classList.contains('closed')) {
+                    popup.classList.add('show');
+                }
+            }, 9000);
+
+            closeBtn.addEventListener('click', () => {
+                popup.classList.remove('show');
+                popup.classList.add('closed'); 
+            });
+
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.classList.remove('show');
+                    popup.classList.add('closed');
+                }
+            });
+
+            // 4. Placeholder Link Interceptor ("Devs at Work")
+            const previewToast = document.getElementById('previewToast');
+            const allLinks = document.querySelectorAll('a');
+            let toastTimer;
+
+            allLinks.forEach(link => {
+                // Ignore WhatsApp link from toast
+                if (link.classList.contains('wa-widget')) return;
+
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if(href === '#' || href === '') {
+                        e.preventDefault(); 
+                        
+                        previewToast.classList.add('show');
+                        
+                        clearTimeout(toastTimer);
+                        toastTimer = setTimeout(() => {
+                            previewToast.classList.remove('show');
+                        }, 3000);
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
